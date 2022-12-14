@@ -13,8 +13,8 @@ class TestLogin(unittest.TestCase):
     def test_a_sign_up(self):
         browser = self.browser  # buka web browser
         browser.get("http://barru.pythonanywhere.com/daftar")  # buka situs
-        time.sleep(3)
-        browser.find_element(By.XPATH,"/html/body/div/div[3]/div/div[2]/button")  # click sign up
+        time.sleep(1)
+        browser.find_element(By.XPATH,"/html/body/div/div[3]/div/div[2]/button").click()  # click sign up
         time.sleep(1)
         browser.find_element(By.CSS_SELECTOR, "input#name_register").send_keys("Admin Tester")  # isi nama
         time.sleep(1)
@@ -30,19 +30,17 @@ class TestLogin(unittest.TestCase):
         response_data = browser.find_element(By.ID, "swal2-title").text
         response_message = browser.find_element(By.ID, "swal2-content").text
 
-        self.assertIn('Berhasil', response_data)
-        self.assertEqual(response_message, 'created user')
+        self.assertIn('berhasil', response_data)
+        self.assertEqual(response_message, 'created user!')
 
     def test_a_success_login(self):
         # steps
         browser = self.browser  # buka web browser
         browser.get("http://barru.pythonanywhere.com/daftar")  # buka situs
-        time.sleep(3)
-        browser.find_element(By.XPATH, "/html/body/div/div[2]/form/input[1]").send_keys(
-            "admin.test@mailinator.com")  # isi email
         time.sleep(1)
-        browser.find_element(By.CSS_SELECTOR, "input#password").send_keys(
-            "123456")  # isi password
+        browser.find_element(By.XPATH, "/html/body/div/div[2]/form/input[1]").send_keys("admin.test@mailinator.com")  # isi email
+        time.sleep(1)
+        browser.find_element(By.CSS_SELECTOR, "input#password").send_keys("123456")  # isi password
         time.sleep(1)
         # klik tombol sign in
         browser.find_element(By.ID, "signin_login").click()
@@ -59,7 +57,7 @@ class TestLogin(unittest.TestCase):
         # steps
         browser = self.browser  # buka web browser
         browser.get("http://barru.pythonanywhere.com/daftar")  # buka situs
-        time.sleep(3)
+        time.sleep(1)
         browser.find_element(By.XPATH, "/html/body/div/div[2]/form/input[1]").send_keys(
             "admin.test@mailinator.com")  # isi email
         time.sleep(1)
@@ -81,7 +79,7 @@ class TestLogin(unittest.TestCase):
         # steps
         browser = self.browser  # buka web browser
         browser.get("http://barru.pythonanywhere.com/daftar")  # buka situs
-        time.sleep(3)
+        time.sleep(1)
         browser.find_element(
             By.XPATH, "/html/body/div/div[2]/form/input[1]").send_keys("alif@mailinator.com")  # isi email
         time.sleep(1)
@@ -96,14 +94,14 @@ class TestLogin(unittest.TestCase):
         response_data = browser.find_element(By.ID, "swal2-title").text
         response_message = browser.find_element(By.ID, "swal2-content").text
 
-        self.assertIn('tidak valid', response_data)
-        self.assertEqual(response_message, 'Cek kembali email anda')
+        self.assertIn('not found', response_data)
+        self.assertEqual(response_message, 'Email atau Password Anda Salah')
     
     def test_a_resign_up(self):
         browser = self.browser  # buka web browser
         browser.get("http://barru.pythonanywhere.com/daftar")  # buka situs
-        time.sleep(3)
-        browser.find_element(By.XPATH,"/html/body/div/div[3]/div/div[2]/button")  # click sign up
+        time.sleep(1)
+        browser.find_element(By.XPATH,"/html/body/div/div[3]/div/div[2]/button").click()  # click sign up
         time.sleep(1)
         browser.find_element(By.CSS_SELECTOR, "input#name_register").send_keys("Admin Tester")  # isi nama
         time.sleep(1)
@@ -119,8 +117,8 @@ class TestLogin(unittest.TestCase):
         response_data = browser.find_element(By.ID, "swal2-title").text
         response_message = browser.find_element(By.ID, "swal2-content").text
 
-        self.assertIn('Berhasil', response_data)
-        self.assertEqual(response_message, 'created user')
+        self.assertIn('Oops...', response_data)
+        self.assertEqual(response_message, 'Gagal Register!')
 
     def tearDown(self):
         self.browser.close()
