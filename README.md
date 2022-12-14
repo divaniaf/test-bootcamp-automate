@@ -1,8 +1,9 @@
 # Sanbercode Bootcamp Automation Selenium
 
 Automation testing for QA Bootcamp Exercise created with Visual Studio Code and Selenium Python
-
 ---
+
+Test case link: https://docs.google.com/spreadsheets/d/1wh4IJgN4vnnmudL-zG19o-j0YTCsExNxBV7zDQc9NVw/edit?usp=sharing
 
 ## Library
 
